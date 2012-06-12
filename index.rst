@@ -66,7 +66,7 @@ DIY、ホームセンターでの買物
 onlineのshell
   http://shell.appspot.com/
 
-print, 値
+値, print
 ---------
 
 数値, 文字列, 真理値, 画面に表示
@@ -100,17 +100,17 @@ True
 配列(list), index, slice
 -------------------------
 
->>> x = [1, 2, 4]
->>> x[0]
+>>> xs = [1, 2, 4]
+>>> xs[0]
 1
->>> x[2]
+>>> xs[2]
 4
->>> x[1:]
+>>> xs[1:]
 [2, 4]
->>> x[2] =  10
->>> x[2] 
+>>> xs[2] =  10
+>>> xs[2] 
 10
->>> x
+>>> xs
 [1, 2, 10]
 
 参照
@@ -120,10 +120,10 @@ x,yそのものがlistなのではなく、
 
 listを差し示している。
 
->>> x = [1, 2, 3]
->>> y = x
->>> y[0] = 4
->>> x[0]
+>>> xs = [1, 2, 3]
+>>> ys = xs
+>>> ys[0] = 4
+>>> xs[0]
 4
 
 辞書(dict)
@@ -131,23 +131,13 @@ listを差し示している。
 
 key, value
 
->>> d = {'a':1, 'b':'B', 'c':'paxil'}
-{'a':1, 'b':'B', 'c':'paxil'}
+>>> d = {'a':1, 'b':'B', 3:'foo'}
+{'a':1, 'b':'B', 3:'foo'}
 >>> d['b']
 'B'
+>>> d[3]
+foo
 >>> d[2]   # key error.
-
-dir, help : 「自己紹介」をさせる
---------------------------------
-
->>> d = {}
->>> dir(d)
-['__class__', '__cmp__', '__contains__',
-'__delattr__', '__delitem__', '__doc__',
-'__eq__', '__format__', '__ge__', 
-(略)
->>> help(d)
-
 
 
 if, else
@@ -191,15 +181,49 @@ while
 >>> inc(8)
 9
 
+関数(例をさらに)
+----------------
+
+>>> def times(s, n):
+...     return s*n
+>>> times('abc', 3)
+'abcabcabc'
+>>> def add(x, y, z):
+...     return x+y+z
+>>> add(1, 2, 3)
+6
 
 スコープ
 --------
 
+>>> def foo(x):
+...     y = x+3
+...     return y*x
+>>> foo(3)
+18
+>>> y # not defined.
 >>> a = 4
 >>> def inc_a(x):
 ...     return x + a
 >>> inc_a(3)
 7
+
+object, help, dir
+-----------------
+
+>>> d = {}
+>>> help(d)
+>>> help(1)
+>>> dir(d)
+['__class__', '__cmp__', '__contains__',
+'__delattr__', '__delitem__', '__doc__',
+'__eq__', '__format__', '__ge__', 
+(略)
+
+
+関数自体もobject
+----------------
+
 >>> def inc_f(b):
         def g(x)
 ...         return x + b
@@ -207,9 +231,12 @@ while
 >>> f = inc_f(3)
 >>> f(6)
 9
+>>> d = {1: f}
+>>> d[1](3)
+6
 
-import, dir
------------
+import
+------
 出来合いの部品を使う
 
 >>> import urllib
@@ -232,7 +259,6 @@ web上のデータを取得するための部品
 
 文字列を見つけるための部品
 
-
 >>> import re
 >>> s = re.find('python', data).start()
 >>> e = re.find('python', data).end()
@@ -250,7 +276,6 @@ web上のデータを取得するための部品
 
 Q & A
 -----
-
  
 
 おわり
