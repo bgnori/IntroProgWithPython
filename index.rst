@@ -3,14 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Pythonでプログラミング入門
-==========================
+Pythonを用いたプログラミング入門
+================================
 
 
 発表する人
 ----------
 
-@bgnori
+Noriyuki Hosaka
+
+@bgnori(twitter)
+
+http://github.com/bgnori
 
 
 
@@ -18,6 +22,8 @@ Pythonでプログラミング入門
 ------------------------
 
 なんらかの形で毎日使う。もはや体の一部
+
+直接つかうのは「アプリ」
 
 しかし「出来合い」がほとんど
 
@@ -27,11 +33,13 @@ Pythonでプログラミング入門
 コンピュータとお話
 ------------------
 
-何かしてほしい→意志を伝える。
+何かしてほしい → 意志を伝える。
 
 犬に芸をさせるような感じ = 命令の集まり
 
 相手に合わせる必要 → プログラミング言語
+
+平易なもので始める → Python
 
 
 なんでPython?(1)
@@ -61,16 +69,16 @@ onlineのshell
 print, 値
 ---------
 
-数値, 文字列, 真理値
-画面に表示させる
+数値, 文字列, 真理値, 画面に表示
 
 >>> 1
->>> 1 + 2
->>> "python"
->>> True
->>> 1 == 2 # False
->>> 1 <  2 # True
->>> print "hello, python!"
+1
+>>> 'python'
+'python'
+>>> 1 <  2
+True
+>>> print 'hello, python!'
+'hello, python!'
 
 
 変数, 代入
@@ -81,32 +89,29 @@ print, 値
 >>> x = 1
 >>> y = 2
 >>> print x
+1
 >>> print y
+2
 >>> x = x + 1
 >>> print x
+2
 
 
-配列(list)
-----------
-
-index, slice
+配列(list), index, slice
+-------------------------
 
 >>> x = [1, 2, 4]
->>> x[0]  # 1
->>> x[2]  # 4
->>> x[1:] # [2,4]
+>>> x[0]
+1
+>>> x[2]
+4
+>>> x[1:]
+[2, 4]
 >>> x[2] =  10
->>> x[2]  # 10
-
-辞書(dict)
-----------
-
-key, value
-
->>> d = {"a":1, "b":"B", "c":"paxil"}
->>> d["b"]   # "B"
->>> d[2]   # key error.
-
+>>> x[2] 
+10
+>>> x
+[1, 2, 10]
 
 参照
 ----
@@ -118,20 +123,44 @@ listを差し示している。
 >>> x = [1, 2, 3]
 >>> y = x
 >>> y[0] = 4
->>> x[0]   #4
+>>> x[0]
+4
+
+辞書(dict)
+----------
+
+key, value
+
+>>> d = {'a':1, 'b':'B', 'c':'paxil'}
+{'a':1, 'b':'B', 'c':'paxil'}
+>>> d['b']
+'B'
+>>> d[2]   # key error.
+
+dir, help : 「自己紹介」をさせる
+--------------------------------
+
+>>> d = {}
+>>> dir(d)
+['__class__', '__cmp__', '__contains__',
+'__delattr__', '__delitem__', '__doc__',
+'__eq__', '__format__', '__ge__', 
+(略)
+>>> help(d)
+
 
 
 if, else
 --------
 
-indentと"block"
+indentと'block'
 
 >>> if True:
-...     print "Yes"
-...     print "We"
-...     print "Can"
+...     print 'Yes'
+...     print 'We'
+...     print 'Can'
 ... else:
-...     print "F"
+...     print 'F'
 
 
 while
@@ -143,53 +172,60 @@ while
 >>> while(x<3):
 ...     print x
 ...     x = x+1
-
+0
+1
+2
 
 関数
 ----
 
 処理の再利用
 
+「ほしいこと」と「実現方法」の分解
+(抽象化)
+
 >>> def inc(x):
 ...     return x+1
->>> print inc(5) # 6
->>> print inc(8) # 9
+>>> inc(5)
+6
+>>> inc(8)
+9
 
 
 スコープ
 --------
 
-変数は何をさしているか。
-
 >>> a = 4
 >>> def inc_a(x):
 ...     return x + a
->>> print inc_a(3)   # 7
-
+>>> inc_a(3)
+7
+>>> def inc_f(b):
+        def g(x)
+...         return x + b
+...     return g
+>>> f = inc_f(3)
+>>> f(6)
+9
 
 import, dir
 -----------
-
 出来合いの部品を使う
 
 >>> import urllib
->>> dir(urllib)
+>>> help(urllib)
 
 充実したドキュメント
-
 http://www.python.jp/doc/release/
-
 
 urllib
 ------
 
 web上のデータを取得するための部品
 
-
 >>> import urllib
->>> data = urllib.urlopen("http://python.org/").read()
+>>> data = urllib.urlopen('http://python.org/').read()
 >>> data[:400]
-
 
 正規表現
 --------
@@ -198,8 +234,8 @@ web上のデータを取得するための部品
 
 
 >>> import re
->>> s = re.find("python", data).start()
->>> e = re.find("python", data).end()
+>>> s = re.find('python', data).start()
+>>> e = re.find('python', data).end()
 
 まとめ
 ------
@@ -215,13 +251,10 @@ web上のデータを取得するための部品
 Q & A
 -----
 
- 質疑応答
-
+ 
 
 おわり
 ------
-ありがとうございました。
 
-配布資料にリンク集, 参考図書など
-
+ありがとうございました!
 
