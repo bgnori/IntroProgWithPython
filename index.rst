@@ -66,6 +66,9 @@ DIY、ホームセンターでの買物
 onlineのshell
   http://shell.appspot.com/
 
+onlineの実行環境
+  http://www.compileonline.com/execute_python_online.php
+
 値, print
 ---------
 
@@ -107,7 +110,7 @@ True
 4
 >>> xs[1:]
 [2, 4]
->>> xs[2] =  10
+>>> xs[2] = 10 # GAE上では破壊的変更は出来ない
 >>> xs[2] 
 10
 >>> xs
@@ -122,7 +125,7 @@ listを差し示している。
 
 >>> xs = [1, 2, 3]
 >>> ys = xs
->>> ys[0] = 4
+>>> ys[0] = 4 # GAE上では破壊的変更は出来ない
 >>> xs[0]
 4
 
@@ -136,7 +139,7 @@ key, value
 >>> d['b']
 'B'
 >>> d[3]
-foo
+'foo'
 >>> d[2]   # key error.
 
 
@@ -188,9 +191,13 @@ while
 ...     return s*n
 >>> times('abc', 3)
 'abcabcabc'
->>> def add(x, y, z):
+>>> def sum(x, y, z):
 ...     return x+y+z
->>> add(1, 2, 3)
+>>> sum(1, 2, 3)
+6
+>>> def herasu(x): # 悪い名前
+...     return x+1
+>>> herasu(5)
 6
 
 スコープ
